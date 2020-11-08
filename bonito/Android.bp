@@ -456,6 +456,7 @@ dex_import {
 cc_prebuilt_library_shared {
 	name: "libMpeg4SwEncoder",
 	owner: "google",
+    shared_libs: ["libEGL", "libGLESv2", "libc++", "libc", "libcutils", "libdl", "liblog", "libm"],
 	strip: {
 		none: true,
 	},
@@ -465,6 +466,26 @@ cc_prebuilt_library_shared {
 		},
 		android_arm64: {
 			srcs: ["proprietary/vendor/lib64/libMpeg4SwEncoder.so"],
+		},
+	},
+	compile_multilib: "both",
+	prefer: true,
+	soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+	name: "libadsprpc",
+	owner: "google",
+    shared_libs: ["libc++", "libc", "libcutils", "libdl", "liblog", "libm"],
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/vendor/lib/libadsprpc.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/vendor/lib64/libadsprpc.so"],
 		},
 	},
 	compile_multilib: "both",
